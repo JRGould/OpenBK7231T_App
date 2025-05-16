@@ -207,12 +207,14 @@ int CSE7766_TryToGetNextCSE7766Packet() {
 }
 
 void CSE7766_Init(void) {
+	addLogAdv(LOG_INFO, LOG_FEATURE_ENERGYMETER, "Initializing CSE7766\r\n");
+
     BL_Shared_Init();
 
     PwrCal_Init(PWR_CAL_MULTIPLY, DEFAULT_VOLTAGE_CAL, DEFAULT_CURRENT_CAL,
                 DEFAULT_POWER_CAL);
 
-	UART_InitUART(CSE7766_BAUD_RATE, 0, false);
+	UART_InitUART(CSE7766_BAUD_RATE, 2, false);
 	UART_InitReceiveRingBuffer(512);
 }
 

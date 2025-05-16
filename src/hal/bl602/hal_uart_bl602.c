@@ -82,10 +82,12 @@ int HAL_UART_Init(int baud, int parity, bool hwflowc)
 		if(CFG_HasFlag(OBK_FLAG_USE_SECONDARY_UART))
 		{
 			fd_console = aos_open("/dev/ttyS1", 0);
+			addLogAdv(LOG_INFO, LOG_FEATURE_ENERGYMETER, "Initializing UART1\r\n");
 		}
 		else
 		{
 			fd_console = aos_open("/dev/ttyS0", 0);
+			addLogAdv(LOG_INFO, LOG_FEATURE_ENERGYMETER, "Initializing UART0\r\n");
 		}
 		if(fd_console >= 0)
 		{
